@@ -37,7 +37,7 @@ set softtabstop=4                                " interpret tab as an indent co
 set shiftwidth=4                                 " set the mod-N indentation used when you hit the tab key
 set tabstop=4 ts=4                               " cause the TAB file-character to be displayed as mod-N (emacs = tab-width)
 set expandtab                                    " cause TAB characters to not be used in the file (indent-tabs-mode)
-set so=5                                         " Keep cursor away from the edge of the screen
+set so=10                                        " Keep cursor away from the edge of the screen
 set backspace=indent,eol,start                   " allowing backspace to work after indent -> see :help i_backspacing
 
 set nowrap
@@ -90,16 +90,16 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 Plugin 'ahayman/vim-nodejs-complete'
-Plugin 'altercation/vim-colors-solarized'
-   " for whatever reason, setting to solarized doesn't work but this does.
-   " https://superuser.com/questions/311370/solarized-colors-in-vim-dont-seem-to-be-working-for-me
-   colorscheme default
+"Plugin 'altercation/vim-colors-solarized'
 Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'bling/vim-airline'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'ervandew/supertab'
    let g:SuperTabDefaultCompletionType = "context"
    let g:SuperTabClosePreviewOnPopupClose = 1
+Plugin 'hzchirs/vim-material'
+   set background=light
+   let g:colorscheme='vim-material'
 Plugin 'junegunn/fzf.vim'
    set rtp+=/usr/local/opt/fzf
    nmap <c-t> :FZF<CR>
@@ -128,24 +128,39 @@ Plugin 'junegunn/fzf.vim'
      \                 <bang>0 ? fzf#vim#with_preview('up:60%')
      \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
      \                 <bang>0)
+Plugin 'junegunn/goyo.vim'
+   let g:goyo_width=100
+   nnoremap <silent> <c-g>g :call EnableGoyo()<CR>
+   nnoremap <silent> <c-g>d :call DisableGoyo()<CR>
+   function EnableGoyo()
+      :Goyo
+      :set wrap
+   endfunction
+   function DisableGoyo()
+      :Goyo!
+      :set nowrap
+      :AirlineToggle
+   endfunction
 Plugin 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-  let g:go_highlight_array_whitespace_error = 0
-  let g:go_highlight_chan_whitespace_error = 0
-  let g:go_highlight_extra_types = 0
-  let g:go_highlight_space_tab_error = 0
-  let g:go_highlight_trailing_whitespace_error = 0
-  let g:go_highlight_operators = 0
-  let g:go_highlight_functions = 0
-  let g:go_highlight_function_arguments = 0
-  let g:go_highlight_function_calls = 0
-  let g:go_highlight_types = 0
-  let g:go_highlight_fields = 0
-  let g:go_highlight_build_constraints = 0
-  let g:go_highlight_generate_tags = 0
-  let g:go_highlight_string_spellcheck = 1
-  let g:go_highlight_format_strings = 1
-  let g:go_highlight_variable_declarations = 0
-  let g:go_highlight_variable_assignments = 0
+   let g:go_fold_enable = ['import']
+   let g:go_highlight_array_whitespace_error = 1
+   let g:go_highlight_chan_whitespace_error = 1
+   let g:go_highlight_extra_types = 1
+   let g:go_highlight_space_tab_error = 1
+   let g:go_highlight_trailing_whitespace_error = 1
+   let g:go_highlight_operators = 1
+   let g:go_highlight_functions = 1
+   let g:go_highlight_function_arguments = 1
+   let g:go_highlight_function_calls = 1
+   let g:go_highlight_types = 1
+   let g:go_highlight_fields = 1
+   let g:go_highlight_build_constraints = 1
+   let g:go_highlight_generate_tags = 1
+   let g:go_highlight_string_spellcheck = 1
+   let g:go_highlight_format_strings = 1
+   let g:go_highlight_variable_declarations = 1
+   let g:go_highlight_variable_assignments = 1
+   let g:go_def_mapping_enabled = 1
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'kien/rainbow_parentheses.vim'
    au VimEnter * RainbowParenthesesToggle
