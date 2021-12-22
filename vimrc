@@ -100,6 +100,7 @@ Plugin 'ervandew/supertab'
 Plugin 'hzchirs/vim-material'
    set background=light
    let g:colorscheme='vim-material'
+Plugin 'jceb/vim-orgmode'
 Plugin 'junegunn/fzf.vim'
    set rtp+=/usr/local/opt/fzf
    nmap <c-t> :FZF<CR>
@@ -207,6 +208,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'wookiehangover/jshint.vim'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-notes'
+   let g:notes_directories = ['~/.vim/notes']
 Plugin 'YankRing.vim'
    let g:yankring_replace_n_pkey = "yp"
    let g:yankring_replace_n_nkey = "yn"
