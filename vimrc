@@ -1,7 +1,8 @@
 " Setup backup location and enable
-let &backupdir="/Users/rohit.patali/.vim/backup"
-let &directory="/Users/rohit.patali/.vim/swap"
-let &undodir="/Users/rohit.patali/.vim/undo"
+set noswapfile
+let &backupdir="~/.vim/backup"
+let &directory="~/.vim/swap"
+let &undodir="~/.vim/undo"
 
 """"""""""""""Global Settings"""""""""""""""""""""
 
